@@ -10,8 +10,26 @@
 070 csvtojson py
 080 search results verified json
 
+101 lambdalog py
+102 lambdarole txt
 110 resultsraw
 120 resultsclean
 130 resultsprocessed
 	index html
 
+
+
+S3 allows static web page hosting, if I can circumvent ajax/php calls with lambda/api calls?
+
+
+http://techslides.com/save-file-with-ajax-and-php
+https://www.w3schools.com/php/php_file_create.asp
+http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html
+http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Tutorials.WebServerDB.CreateWebServer.html
+https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started.html
+
+
+
+https://hg6kfnupte.execute-api.us-east-1.amazonaws.com/test/mydemoresource
+
+curl -H "Content-Type: application/json" -X POST -d "{\"key1\": \"value1b\"}" https://8l28vjekjk.execute-api.us-east-1.amazonaws.com/test

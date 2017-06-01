@@ -16,7 +16,7 @@ img{
 
 <script>
 
-// cd ~/gitnot/whichdog/
+// cd ~/git/whichdog/
 // python2.7 -m SimpleHTTPServer
 // http://0.0.0.0:8000/
 
@@ -31,7 +31,7 @@ while (i == j) {
 
 $(document).ready(function(){
 
-    $.getJSON("output_02b.json", function(data){
+    $.getJSON("080_searchresultsverified.json", function(data){
         $("#div1").append("<img src = '" + data[i].parse_url + "' id = 'DogImg1'>");
         $("#div2").append("<img src = '" + data[j].parse_url + "' id = 'DogImg2'>");
 
@@ -41,29 +41,25 @@ $(document).ready(function(){
 
 
 
-    var xmlhttp;
-    // http://stackoverflow.com/questions/26961750/write-server-text-files-with-ajax
-    if (window.XMLHttpRequest)
-     {// code for IE7+, Firefox, Chrome, Opera, Safari
-     xmlhttp=new XMLHttpRequest();
-     }
-    else
-      {// code for IE6, IE5
-      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-      }
-    xmlhttp.onreadystatechange=function()
-      {
-      if (xmlhttp.readyState==4 && xmlhttp.status==200)
-      {
-    alert('done')
-     }
-    }
+
 
 
 
 
     $('#div1').click(function() {
-        location.reload();
+      $.ajax
+        ({
+            // type: "GET",
+            type: "POST",
+            // dataType : 'json',
+            // async: true,
+            url: '/101_php.php',
+            data: { data: JSON.stringify("AlexTest") },
+            // data: { data: "http://0.0.0.0:8000/AlexTest" },
+            success: function () {alert("Thanks!"); },
+            failure: function() {alert("Error!");}
+        });
+      // location.reload();
     });
 
     $('#div2').click(function() {
