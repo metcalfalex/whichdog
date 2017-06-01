@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style type="text/css">
+
+img{
+  height: auto;
+  width: 600px;
+}
+
+</style>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+
+<script>
+
+// cd ~/gitnot/whichdog/
+// python2.7 -m SimpleHTTPServer
+// http://0.0.0.0:8000/
+
+
+
+i = 1;
+j = 1;
+while (i == j) {
+    i = Math.floor((Math.random() * 100));
+    j = Math.floor((Math.random() * 100));
+}
+
+$(document).ready(function(){
+
+    $.getJSON("output_02b.json", function(data){
+        $("#div1").append("<img src = '" + data[i].parse_url + "' id = 'DogImg1'>");
+        $("#div2").append("<img src = '" + data[j].parse_url + "' id = 'DogImg2'>");
+
+
+    });
+
+
+
+
+    var xmlhttp;
+    // http://stackoverflow.com/questions/26961750/write-server-text-files-with-ajax
+    if (window.XMLHttpRequest)
+     {// code for IE7+, Firefox, Chrome, Opera, Safari
+     xmlhttp=new XMLHttpRequest();
+     }
+    else
+      {// code for IE6, IE5
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+    xmlhttp.onreadystatechange=function()
+      {
+      if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      {
+    alert('done')
+     }
+    }
+
+
+
+
+    $('#div1').click(function() {
+        location.reload();
+    });
+
+    $('#div2').click(function() {
+        location.reload();
+        // window.alert("success");
+
+        // xmlhttp.open("POST","insert.php",true);
+        // xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        
+        // xmlhttp.send("name="+j+"/n");
+
+
+
+    });
+
+
+
+
+
+
+});
+
+
+
+
+</script>
+
+
+
+
+
+</head>
+<body>
+
+
+<h1> Which Dog is a Dog </h1>
+<h2> Decide which dog you think is more of a dog </h2>
+
+
+<div id = "div1"></div>
+
+<div id = "div2"></div>
+
+
+<input type="button" id="button1" value="Image missing, or image not a dog"/>
+
+
+
+</body>
+</html>
+
+
+
+
+

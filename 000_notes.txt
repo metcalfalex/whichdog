@@ -1,0 +1,17 @@
+
+000 notes txt
+010 breeds txt
+020 searchterms xlsx
+021 searchterms csv
+030 searchquery py 
+040 searchresults csv
+050 urlverifier py
+060 search results verified csv
+070 csvtojson py
+080 search results verified json
+
+110 resultsraw
+120 resultsclean
+130 resultsprocessed
+	index html
+
