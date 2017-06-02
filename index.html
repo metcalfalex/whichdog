@@ -49,13 +49,11 @@ $(document).ready(function(){
     $('#div1').click(function() {
       $.ajax
         ({
-            // type: "GET",
             type: "POST",
-            // dataType : 'json',
-            // async: true,
-            url: '/101_php.php',
-            data: { data: JSON.stringify("AlexTest") },
-            // data: { data: "http://0.0.0.0:8000/AlexTest" },
+            dataType : 'application/json',
+            async: true,
+            url: 'https://8l28vjekjk.execute-api.us-east-1.amazonaws.com/test',
+            data: "{\"key1\": \"value1c\"}",
             success: function () {alert("Thanks!"); },
             failure: function() {alert("Error!");}
         });
@@ -64,12 +62,7 @@ $(document).ready(function(){
 
     $('#div2').click(function() {
         location.reload();
-        // window.alert("success");
 
-        // xmlhttp.open("POST","insert.php",true);
-        // xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        
-        // xmlhttp.send("name="+j+"/n");
 
 
 
