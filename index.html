@@ -9,18 +9,15 @@ img{
   width: 600px;
 }
 
+#mytable,td{
+    border:1px solid blue;
+}
+
 </style>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-
 <script>
-
-// cd ~/git/whichdog/
-// python2.7 -m SimpleHTTPServer
-// http://0.0.0.0:8000/
-
-
 
 i = 1;
 j = 1;
@@ -35,16 +32,25 @@ $(document).ready(function(){
         $("#div1").append("<img src = '" + data[i].parse_url + "' id = 'DogImg1'>");
         $("#div2").append("<img src = '" + data[j].parse_url + "' id = 'DogImg2'>");
 
-
     });
 
 
+    $.getJSON("130_resultsprocessed.json", function(data){
+        var tbl=$("<table/>").attr("id","mytable");
+        $("#div3").append(tbl);
+        for(var i=0;i<data.length;i++)
+        {
+            var tr="<tr>";
+            var td1="<td>"+data[i]["dogall"]+"</td>";
+            var td2="<td>"+data[i]["dogyes_count"]+"</td>";
+            var td3="<td>"+data[i]["dogall_count"]+"</td>";
+            var td4="<td>"+data[i]["score"]+"</td></tr>";
+            
+           $("#mytable").append(tr+td1+td2+td3+td4); 
+          
+        }
 
-
-
-
-
-
+    });
 
     $('#div1').click(function() {
       $.ajax
@@ -53,58 +59,40 @@ $(document).ready(function(){
             dataType : 'application/json',
             async: true,
             url: 'https://8l28vjekjk.execute-api.us-east-1.amazonaws.com/test',
-            data: "{\"key1\": \"value1c\"}",
-            success: function () {alert("Thanks!"); },
-            failure: function() {alert("Error!");}
+            data: "{\"dogyes\": "+i+", \"dogno\": "+j+"}"
         });
-      // location.reload();
+      location.reload();
     });
 
     $('#div2').click(function() {
-        location.reload();
-
-
-
-
+      $.ajax
+        ({
+            type: "POST",
+            dataType : 'application/json',
+            async: true,
+            url: 'https://8l28vjekjk.execute-api.us-east-1.amazonaws.com/test',
+            data: "{\"dogyes\": "+j+", \"dogno\": "+i+"}"
+        });
+      location.reload();
     });
-
-
-
-
-
 
 });
 
-
-
-
 </script>
-
-
-
-
 
 </head>
 <body>
 
-
 <h1> Which Dog is a Dog </h1>
 <h2> Decide which dog you think is more of a dog </h2>
-
 
 <div id = "div1"></div>
 
 <div id = "div2"></div>
 
+<div id = "div3"></div>
 
 <input type="button" id="button1" value="Image missing, or image not a dog"/>
 
-
-
 </body>
 </html>
-
-
-
-
-
