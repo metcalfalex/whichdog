@@ -18,12 +18,16 @@ def lambda_handler(event, context):
     lists = [dogall,dogyes_count,dogall_count,score]
     keys = ['dogall','dogyes_count','dogall_count','score']
     dctlst = []
-    for i in enumerate(dogall):
+    for i,n in enumerate(dogall):
+        # for lst in lists:
+        lst2 = [item[i] for item in lists]
+        dctlst.append(dict(zip(keys,lst2)))
+    # for i in enumerate(dogall):
         # lst2 = [lst[i] for lst in lists]
         # dctlst.append(dict(zip(keys,lst2)))
-        for lst in lists:
+        # for lst in lists:
             # x = dict(zip(keys,lst))
-            dctlst.append(dict(zip(keys,lst)))
+            # dctlst.append(dict(zip(keys,lst)))
         # lst2 = [lst[i] for lst in lists]
         # dctlst.append(dict(zip(keys,lst2)))
     # lst2 = [lst[item] for lst in lists for item in enumerate(dogall)]
